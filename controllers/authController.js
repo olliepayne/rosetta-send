@@ -27,7 +27,7 @@ function signup(req, res) {
     newUser.password = hash
     newUser.save()
      .then((savedUser) => {
-      const token = jwt.sign({ user: newUser }, process.env.JWT_SECRET)
+      const token = jwt.sign({ user: savedUser }, process.env.JWT_SECRET)
       res.json({ token })
      })
    })

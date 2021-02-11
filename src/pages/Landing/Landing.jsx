@@ -1,4 +1,6 @@
-const Landing = () => {
+import { useState } from 'react'
+
+const Landing = (props) => {
  return (
   <div>
    Home
