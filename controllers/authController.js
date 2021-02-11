@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
+const tokenStorage = require('../config/tokenStorage')
 const User = require('../models/User')
 
 module.exports = {
@@ -28,8 +29,11 @@ function signup(req, res) {
     newUser.save()
      .then((savedUser) => {
       const token = jwt.sign({ user: savedUser }, process.env.JWT_SECRET)
+      tokenStorage.addToken(token)
       res.json({ token })
      })
    })
   })
 }
+
+// login function which creates and sends a jwt back to the client
