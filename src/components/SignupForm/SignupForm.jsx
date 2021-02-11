@@ -5,7 +5,14 @@ const SignupForm = () => {
 
  return (
   <form>
-
+   <label>*Username</label>
+   <input name="username" type="text" />
+   <label>*Email</label>
+   <input name="email" type="text" />
+   <label>*Password</label>
+   <input name="password" type="password" />
+   <label>*Confirm Password</label>
+   <input name="passwordCheck" type="password" />
   </form>
  )
 }
