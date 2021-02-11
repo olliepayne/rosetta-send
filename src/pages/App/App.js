@@ -4,6 +4,10 @@ import Landing from '../Landing/Landing'
 import Signup from '../Signup/Signup'
 
 function App() {
+ const handleSignup = (form) => {
+  console.log(form)
+ }
+
  return (
   <div className="App">
    <Switch>
@@ -11,7 +15,7 @@ function App() {
      <Landing />
     </Route>
     <Route exact path="/signup">
-     <Signup />
+     <Signup handleSignup={handleSignup} />
     </Route>
    </Switch>
   </div>

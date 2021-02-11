@@ -1,9 +1,7 @@
 import { useState } from 'react'
 
-const SignupForm = () => {
- // import useState, setup inital form data hook
- // handle input changes
- // submit form data through props
+const SignupForm = (props) => {
+ const { handleSignup } = props
 
  const [formData, setFormData] = useState({
   username: '',
@@ -27,17 +25,37 @@ const SignupForm = () => {
   return false
  }
 
+ const isValidForm = () => {
+  for(const key in formData) {
+   console.log(formData[key])
+   if(formData[key] === '') {
+    return false
+   }
+  }
+
+  return true
+ }
+
+ const handleSubmit = (e) => {
+  e.preventDefault()
+
+  if(isValidForm()) {
+   handleSignup(formData)
+  }
+ }
+
  return (
-  <form>
+  <form onSubmit={handleSubmit} >
    <label>*Username</label>
-   <input name="username" type="text" />
+   <input name="username" type="text" onChange={handleInputChange} />
    <label>*Email</label>
-   <input name="email" type="text" />
+   <input name="email" type="text" onChange={handleInputChange} />
    <label>*Password</label>
    <input name="password" type="password" onChange={handleInputChange} />
    {!passwordMatch && <p>passwords must match</p>}
    <label>*Confirm Password</label>
    <input name="passwordCheck" type="password" onChange={handleInputChange} />
+   <button>Submit</button>
   </form>
  )
 }
