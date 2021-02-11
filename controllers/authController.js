@@ -37,3 +37,4 @@ function signup(req, res) {
 }
 
 // login function which creates and sends a jwt back to the client
+// also validates our login credentials
