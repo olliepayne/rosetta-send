@@ -1,10 +1,10 @@
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
-const tokenStorage = require('../config/tokenStorage')
 const User = require('../models/User')
 
 module.exports = {
- signup
+ signup,
+ login
 }
 
 function signup(req, res) {
@@ -29,12 +29,28 @@ function signup(req, res) {
     newUser.save()
      .then((savedUser) => {
       const token = jwt.sign({ user: savedUser }, process.env.JWT_SECRET)
-      tokenStorage.addToken(token)
+      res.cookie("token", token)
       res.json({ token })
      })
    })
   })
 }
 
-// login function which creates and sends a jwt back to the client
-// also validates our login credentials
+function login(req, res) {
+ const { email, password } = req.body
+
+ if (!email || !password) return res.status(400).json({ msg: 'Incomplete form.' })
+
+ User.find({ email })
+  .then((user) => {
+   if (!user) return res.status(400).json({ msg: 'User does not exist.' })
+
+   bcrypt.compare(password, user.password, (err, match) => {
+    if (!match) return res.status(400).json({ msg: 'Invalid Credentials.' })
+
+    const token = jwt.sign({ user: savedUser }, process.env.JWT_SECRET)
+    res.cookie("token", token)
+    res.json({ token })
+   })
+  })
+}
