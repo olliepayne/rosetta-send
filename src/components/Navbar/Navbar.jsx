@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import NavbarCSS from './Navbar.module.css'
 
 const Navbar = (props) => {
- const { user } = props
+ const { user, handleLogout } = props
 
  return (
   <nav>
@@ -11,7 +11,7 @@ const Navbar = (props) => {
     {user ?
      <>
       <li><Link to="/routes">Routes</Link></li>
-      <li><Link to="/">Logout</Link></li>
+      <li><Link to="/login" onClick={handleLogout}>Logout</Link></li>
      </>
      :
      <>

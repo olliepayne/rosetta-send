@@ -5,7 +5,8 @@ const User = require('../models/User')
 module.exports = {
  signup,
  login,
- getUser
+ getUser,
+ logout
 }
 
 function signup(req, res) {
@@ -57,13 +58,14 @@ function login(req, res) {
 }
 
 function getUser(req, res) {
- const token = req.cookies['token']
- if(token) {
-  const user = jwt.verify(token, process.env.JWT_SECRET)
-  res.json(user)
- }
+ // const token = req.cookies['token']
+ // if(token || token !== '') {
+ //  const user = jwt.verify(token, process.env.JWT_SECRET)
+ //  res.json(user)
+ // }
 }
 
-function logout() {
- // clear our token cookie on logging out
+function logout(req, res) {
+ const token = req.cookies['token']
+ if(token) res.clearCookie('token')
 }

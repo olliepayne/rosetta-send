@@ -25,13 +25,18 @@ function App() {
   setUser(result)
  }
 
+ const handleLogout = async () => {
+  authAPI.logout()
+  setUser()
+ }
+
  useEffect(() => {
   handleGetUser()
  }, [])
 
  return (
   <div className="App">
-   <Navbar user={user} />
+   <Navbar user={user} handleLogout={handleLogout} />
    <Switch>
     <Route exact path="/">
      <Landing />

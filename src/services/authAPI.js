@@ -28,3 +28,9 @@ export function getUser() {
    .then((res) => res.json())
  )
 }
+
+export function logout() {
+ return (
+  fetch(baseURL + 'logout', { mode: 'cors' })
+ )
+}
