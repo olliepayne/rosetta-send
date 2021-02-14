@@ -20,7 +20,14 @@ function App() {
   setUser(result)
  }
 
- // determine how to access our cookie (returning our user object on a page refresh)
+ const handleGetUser = async () => {
+  const result = await authAPI.getUser()
+  setUser(result)
+ }
+
+ useEffect(() => {
+  handleGetUser()
+ }, [])
 
  return (
   <div className="App">

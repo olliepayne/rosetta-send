@@ -21,3 +21,10 @@ export function login(form) {
    .then((res) => res.json())
  )
 }
+
+export function getUser() {
+ return (
+  fetch(baseURL + 'getUser', { mode: 'cors' })
+   .then((res) => res.json())
+ )
+}

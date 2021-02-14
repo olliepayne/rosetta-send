@@ -4,7 +4,8 @@ const User = require('../models/User')
 
 module.exports = {
  signup,
- login
+ login,
+ getUser
 }
 
 function signup(req, res) {
@@ -29,7 +30,7 @@ function signup(req, res) {
     newUser.save()
      .then((savedUser) => {
       const token = jwt.sign({ user: savedUser }, process.env.JWT_SECRET)
-      res.cookie("token", token, { expire: 1000 * 60 * 60 * 24, httpOnly: true })
+      res.cookie("token", token, { maxAge: 1000 * 60 * 60 * 24, httpOnly: true, secure: true })
       res.json({ token })
      })
    })
@@ -49,10 +50,18 @@ function login(req, res) {
     if (!match) return res.status(400).json({ msg: 'Invalid Credentials.' })
 
     const token = jwt.sign({ user }, process.env.JWT_SECRET)
-    res.cookie("token", token, { expire: 1000 * 60 * 60 * 24, httpOnly: true })
+    res.cookie("token", token, { maxAge: 1000 * 60 * 60 * 24, httpOnly: true, secure: true })
     res.json({ token })
    })
   })
+}
+
+function getUser(req, res) {
+ const token = req.cookies['token']
+ if(token) {
+  const user = jwt.verify(token, process.env.JWT_SECRET)
+  res.json(user)
+ }
 }
 
 function logout() {
