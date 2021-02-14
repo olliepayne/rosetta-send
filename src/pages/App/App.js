@@ -10,10 +10,13 @@ import Login from '../Login/Login'
 function App() {
  const handleSignup = async (form) => {
   const result = await authAPI.signup(form)
-  // do something with our result
+  console.log(result)
  }
 
- // add a hanglelogin
+ const handleLogin = async (form) => {
+  const result = await authAPI.login(form)
+  console.log(result)
+ }
 
  return (
   <div className="App">
@@ -26,7 +29,7 @@ function App() {
      <Signup handleSignup={handleSignup} />
     </Route>
     <Route exact path="/login">
-     <Login />
+     <Login handleLogin={handleLogin} />
     </Route>
    </Switch>
   </div>

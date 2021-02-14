@@ -27,7 +27,6 @@ const SignupForm = (props) => {
 
  const isValidForm = () => {
   for(const key in formData) {
-   console.log(formData[key])
    if(formData[key] === '') {
     return false
    }

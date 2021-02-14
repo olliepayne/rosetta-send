@@ -41,14 +41,14 @@ function login(req, res) {
 
  if (!email || !password) return res.status(400).json({ msg: 'Incomplete form.' })
 
- User.find({ email })
+ User.findOne({ email })
   .then((user) => {
    if (!user) return res.status(400).json({ msg: 'User does not exist.' })
 
    bcrypt.compare(password, user.password, (err, match) => {
     if (!match) return res.status(400).json({ msg: 'Invalid Credentials.' })
 
-    const token = jwt.sign({ user: savedUser }, process.env.JWT_SECRET)
+    const token = jwt.sign({ user }, process.env.JWT_SECRET)
     res.cookie("token", token)
     res.json({ token })
    })

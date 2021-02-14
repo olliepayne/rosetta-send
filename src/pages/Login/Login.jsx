@@ -1,11 +1,11 @@
 import LoginForm from '../../components/LoginForm/LoginForm'
 
-const Login = () => {
- // handle login props
+const Login = (props) => {
+ const { handleLogin } = props
 
  return (
   <div>
-   <LoginForm />
+   <LoginForm handleLogin={handleLogin} />
   </div>
  )
 }

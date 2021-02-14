@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 const LoginForm = (props) => {
- // const { handleLogin } = props
+ const { handleLogin } = props
 
  const [formData, setFormData] = useState({
   email: '',
@@ -16,7 +16,6 @@ const LoginForm = (props) => {
 
  const isValidForm = () => {
   for(const key in formData) {
-   console.log(formData[key])
    if(formData[key] === '') {
     return false
    }
@@ -29,7 +28,7 @@ const LoginForm = (props) => {
   e.preventDefault()
 
   if(isValidForm()) {
-   
+   handleLogin(formData)
   }
  }
 
