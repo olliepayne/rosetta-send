@@ -20,9 +20,11 @@ function App() {
   setUser(result)
  }
 
+ // determine how to access our cookie (returning our user object on a page refresh)
+
  return (
   <div className="App">
-   <Navbar />
+   <Navbar user={user} />
    <Switch>
     <Route exact path="/">
      <Landing />

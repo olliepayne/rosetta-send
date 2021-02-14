@@ -21,5 +21,3 @@ export function login(form) {
    .then((res) => res.json())
  )
 }
-
-// api call to get the user from our cookie
