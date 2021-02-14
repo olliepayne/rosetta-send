@@ -8,14 +8,16 @@ import Signup from '../Signup/Signup'
 import Login from '../Login/Login'
 
 function App() {
+ const [user, setUser] = useState()
+
  const handleSignup = async (form) => {
   const result = await authAPI.signup(form)
-  console.log(result)
+  setUser(result)
  }
 
  const handleLogin = async (form) => {
   const result = await authAPI.login(form)
-  console.log(result)
+  setUser(result)
  }
 
  return (

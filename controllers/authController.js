@@ -29,7 +29,7 @@ function signup(req, res) {
     newUser.save()
      .then((savedUser) => {
       const token = jwt.sign({ user: savedUser }, process.env.JWT_SECRET)
-      res.cookie("token", token)
+      res.cookie("token", token, { expire: 1000 * 60 * 60 * 24, httpOnly: true })
       res.json({ token })
      })
    })
@@ -49,8 +49,12 @@ function login(req, res) {
     if (!match) return res.status(400).json({ msg: 'Invalid Credentials.' })
 
     const token = jwt.sign({ user }, process.env.JWT_SECRET)
-    res.cookie("token", token)
+    res.cookie("token", token, { expire: 1000 * 60 * 60 * 24, httpOnly: true })
     res.json({ token })
    })
   })
+}
+
+function logout() {
+ // clear our token cookie on logging out
 }
