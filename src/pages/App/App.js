@@ -6,6 +6,7 @@ import Navbar from '../../components/Navbar/Navbar'
 import Landing from '../Landing/Landing'
 import Signup from '../Signup/Signup'
 import Login from '../Login/Login'
+import AddClimb from '../AddClimb/AddClimb'
 
 function App() {
  const [user, setUser] = useState()
@@ -47,6 +48,9 @@ function App() {
     </Route>
     <Route exact path="/login">
      <Login handleLogin={handleLogin} />
+    </Route>
+    <Route exact path="/routes/new">
+     <AddClimb />
     </Route>
    </Switch>
   </div>
