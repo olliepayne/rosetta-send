@@ -5,7 +5,7 @@ const Login = (props) => {
 
  return (
   <div>
-   {user ?
+   {!user ?
     <LoginForm handleLogin={handleLogin} />
     :
     <p>Welcome, {user.username}</p>

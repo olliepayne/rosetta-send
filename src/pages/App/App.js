@@ -9,6 +9,20 @@ import Login from '../Login/Login'
 import AddClimb from '../AddClimb/AddClimb'
 
 function App() {
+ const boulderGrades = [
+  'V0', 'V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9', 'V10', 'V11', 'V12', 'V13', 'V14', 'V15', 'V16', 'V17'
+ ]
+ 
+ const sportGrades = [
+  '5.0', '5.1', '5.2', '5.3', '5.4', '5.5', '5.6', '5.7', '5.8', '5.9', '5.10-', '5.10', '5.10+', '5.11-', '5.11', '5.11+', '5.12-', '5.12', '5.12+', '5.13-', '5.13', '5.13+',
+  '5.14-', '5.14', '5.14+', '5.15-', '5.15', '5.15+'
+ ]
+ 
+ const climbGrades = {
+  boulder: boulderGrades,
+  sport: sportGrades
+ }
+
  const [user, setUser] = useState()
 
  const handleSignup = async (form) => {

@@ -2,8 +2,15 @@ import { useState } from 'react'
 
 const AddClimbForm = (props) => {
  const [formData, setFormData] = useState({
-  
+  name: '',
+  type: '',
+  grade: '',
+  location: ''
  })
+
+ // dynamically change grade selection based off of climb type
+ // check type moving to and type coming from, display select options based off
+ // two unique select boxes, displayed based off render condition ?
 
  const handleInputChange = (e) => {
   const newData = formData
@@ -31,8 +38,8 @@ const AddClimbForm = (props) => {
 
  return (
   <form onSubmit={handleSubmit} >
-   <label>*Email</label>
-   <input name="email" type="text" onChange={handleInputChange} />
+   <label>*Name</label>
+   <input name="name" type="text" onChange={handleInputChange} />
    <button>Submit</button>
   </form>
  )
