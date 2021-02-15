@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import LoginFormCSS from './LoginForm.module.css'
 
 const LoginForm = (props) => {
  const { handleLogin } = props
@@ -16,8 +17,8 @@ const LoginForm = (props) => {
  }
 
  const isValidForm = () => {
-  for(const key in formData) {
-   if(formData[key] === '') {
+  for (const key in formData) {
+   if (formData[key] === '') {
     setIsComplete(false)
     return false
    }
@@ -30,20 +31,26 @@ const LoginForm = (props) => {
  const handleSubmit = (e) => {
   e.preventDefault()
 
-  if(isValidForm()) {
+  if (isValidForm()) {
    handleLogin(formData)
   }
  }
 
  return (
-  <form onSubmit={handleSubmit}>
-   {!isComplete && <p>Please enter all credentials.</p>}
-   <label>*Email</label>
-   <input name="email" type="text" onChange={handleInputChange} />
-   <label>*Password</label>
-   <input name="password" type="password" onChange={handleInputChange} />
-   <button>Submit</button>
-  </form>
+  <div className={LoginFormCSS.formContainer}>
+   {!isComplete && <p className={LoginFormCSS.formMessage}>Please enter all credentials.</p>}
+   <form className={LoginFormCSS.loginForm} onSubmit={handleSubmit}>
+    <div className={LoginFormCSS.formEntry}>
+     <label>*Email</label>
+     <input name="email" type="text" onChange={handleInputChange} />
+    </div>
+    <div className={LoginFormCSS.formEntry}>
+     <label>*Password</label>
+     <input name="password" type="password" onChange={handleInputChange} />
+    </div>
+    <button className={LoginFormCSS.submitBtn}>Submit</button>
+   </form>
+  </div>
  )
 }
 
