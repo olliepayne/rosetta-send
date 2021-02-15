@@ -39,7 +39,7 @@ const LoginForm = (props) => {
  return (
   <div className={LoginFormCSS.formContainer}>
    {!isComplete && <p className={LoginFormCSS.formMessage}>Please enter all credentials.</p>}
-   {statusCode && <p className={LoginFormCSS.statusCode}>{statusCode}</p>}
+   {statusCode && isComplete ? <p className={LoginFormCSS.statusCode}>{statusCode}</p> : null}
    <form className={LoginFormCSS.loginForm} onSubmit={handleSubmit}>
     <div className={LoginFormCSS.formEntry}>
      <label>*Email</label>
