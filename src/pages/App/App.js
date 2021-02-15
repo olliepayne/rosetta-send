@@ -7,6 +7,7 @@ import Landing from '../Landing/Landing'
 import Signup from '../Signup/Signup'
 import Login from '../Login/Login'
 import AddClimb from '../AddClimb/AddClimb'
+import ClimbsList from '../ClimbsList/ClimbsList'
 
 function App() {
  const history = useHistory()
@@ -79,6 +80,9 @@ function App() {
     </Route>
     <Route exact path="/routes/new">
      <AddClimb user={user} climbGrades={climbGrades} />
+    </Route>
+    <Route exact path="/routes">
+     <ClimbsList />
     </Route>
     <Route exact path="/routes/:id">
      <div>hello</div>
