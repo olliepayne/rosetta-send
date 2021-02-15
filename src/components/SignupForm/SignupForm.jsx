@@ -13,7 +13,7 @@ const SignupForm = (props) => {
  const [passwordMatch, setPasswordMatch] = useState(true)
 
  const handleInputChange = (e) => {
-  const newData = formData
+  const newData = Object.assign({}, formData)
   newData[e.target.name] = e.target.value
   setFormData(newData)
 

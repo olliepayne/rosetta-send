@@ -9,7 +9,7 @@ const LoginForm = (props) => {
  })
 
  const handleInputChange = (e) => {
-  const newData = formData
+  const newData = Object.assign({}, formData)
   newData[e.target.name] = e.target.value
   setFormData(newData)
  }

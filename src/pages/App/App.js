@@ -64,7 +64,7 @@ function App() {
      <Login user={user} handleLogin={handleLogin} />
     </Route>
     <Route exact path="/routes/new">
-     <AddClimb user={user} />
+     <AddClimb user={user} climbGrades={climbGrades} />
     </Route>
    </Switch>
   </div>
