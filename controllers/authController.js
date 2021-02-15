@@ -32,7 +32,7 @@ function signup(req, res) {
      .then((savedUser) => {
       const token = jwt.sign({ user: savedUser }, process.env.JWT_SECRET)
       res.cookie("token", token, { maxAge: 1000 * 60 * 60 * 24, httpOnly: true })
-      res.json({ token })
+      res.json(user)
      })
    })
   })
@@ -52,7 +52,7 @@ function login(req, res) {
 
     const token = jwt.sign({ user }, process.env.JWT_SECRET)
     res.cookie("token", token, { maxAge: 1000 * 60 * 60 * 24, httpOnly: true })
-    res.json({ token })
+    res.json(user)
    })
   })
 }
