@@ -26,16 +26,16 @@ function App() {
  }
 
  const [user, setUser] = useState()
- const [authStatus, setAuthStatus] = useState()
+ const [statusCode, setStatusCode] = useState()
 
  const handleSignup = async (form) => {
   const result = await authAPI.signup(form)
   if(result._id) {
    setUser(result)
-   setAuthStatus()
+   setStatusCode()
    history.push('/')
   } else {
-   setAuthStatus(result.msg)
+   setStatusCode(result.msg)
   }
  }
 
@@ -43,10 +43,10 @@ function App() {
   const result = await authAPI.login(form)
   if(result._id) {
    setUser(result)
-   setAuthStatus()
+   setStatusCode()
    history.push('/')
   } else {
-   setAuthStatus(result.msg)
+   setStatusCode(result.msg)
   }
  }
 
@@ -72,10 +72,10 @@ function App() {
      <Landing user={user} />
     </Route>
     <Route exact path="/signup">
-     <Signup authStatus={authStatus} handleSignup={handleSignup} />
+     <Signup statusCode={statusCode} handleSignup={handleSignup} />
     </Route>
     <Route exact path="/login">
-     <Login user={user} authStatus={authStatus} handleLogin={handleLogin} />
+     <Login user={user} statusCode={statusCode} handleLogin={handleLogin} />
     </Route>
     <Route exact path="/routes/new">
      <AddClimb user={user} climbGrades={climbGrades} />

@@ -12,7 +12,11 @@
 }
 
 .formMessage {
- color: lightpink;
+ color: red;
+}
+
+.statusCode {
+ color: red;
 }
 
 .loginForm {

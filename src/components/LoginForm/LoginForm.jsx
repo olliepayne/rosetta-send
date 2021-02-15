@@ -2,7 +2,7 @@ import { useState } from 'react'
 import LoginFormCSS from './LoginForm.module.css'
 
 const LoginForm = (props) => {
- const { handleLogin } = props
+ const { statusCode, handleLogin } = props
 
  const [formData, setFormData] = useState({
   email: '',
@@ -39,6 +39,7 @@ const LoginForm = (props) => {
  return (
   <div className={LoginFormCSS.formContainer}>
    {!isComplete && <p className={LoginFormCSS.formMessage}>Please enter all credentials.</p>}
+   {statusCode && <p className={LoginFormCSS.statusCode}>{statusCode}</p>}
    <form className={LoginFormCSS.loginForm} onSubmit={handleSubmit}>
     <div className={LoginFormCSS.formEntry}>
      <label>*Email</label>
