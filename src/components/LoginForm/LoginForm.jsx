@@ -7,6 +7,7 @@ const LoginForm = (props) => {
   email: '',
   password: ''
  })
+ const [isComplete, setIsComplete] = useState(true)
 
  const handleInputChange = (e) => {
   const newData = Object.assign({}, formData)
@@ -17,10 +18,12 @@ const LoginForm = (props) => {
  const isValidForm = () => {
   for(const key in formData) {
    if(formData[key] === '') {
+    setIsComplete(false)
     return false
    }
   }
 
+  setIsComplete(true)
   return true
  }
 
@@ -33,7 +36,8 @@ const LoginForm = (props) => {
  }
 
  return (
-  <form onSubmit={handleSubmit} >
+  <form onSubmit={handleSubmit}>
+   {!isComplete && <p>Please enter all credentials.</p>}
    <label>*Email</label>
    <input name="email" type="text" onChange={handleInputChange} />
    <label>*Password</label>

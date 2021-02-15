@@ -9,6 +9,8 @@ import Login from '../Login/Login'
 import AddClimb from '../AddClimb/AddClimb'
 
 function App() {
+ // use history, so we can redirect
+
  const boulderGrades = [
   'V0', 'V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9', 'V10', 'V11', 'V12', 'V13', 'V14', 'V15', 'V16', 'V17'
  ]
@@ -24,6 +26,7 @@ function App() {
  }
 
  const [user, setUser] = useState()
+ const [authMessage, setAuthMessage] = useState()
 
  const handleSignup = async (form) => {
   const result = await authAPI.signup(form)
@@ -33,7 +36,11 @@ function App() {
 
  const handleLogin = async (form) => {
   const result = await authAPI.login(form)
-  setUser(result)
+  if(result._id) {
+   setUser(result)
+  } else {
+   setAuthMessage(result.msg)
+  }
  }
 
  const handleGetUser = async () => {
@@ -61,7 +68,7 @@ function App() {
      <Signup handleSignup={handleSignup} />
     </Route>
     <Route exact path="/login">
-     <Login user={user} handleLogin={handleLogin} />
+     <Login user={user} authMessage={authMessage} handleLogin={handleLogin} />
     </Route>
     <Route exact path="/routes/new">
      <AddClimb user={user} climbGrades={climbGrades} />
