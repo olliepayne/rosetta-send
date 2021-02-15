@@ -3,11 +3,11 @@ import { useState } from 'react'
 const ClimbFinder = (props) => {
  const { climbGrades, handleClimbSearch } = props
 
- // implement grade range system
  const [formData, setFormData] = useState({
   name: '',
   type: '',
-  grade: '',
+  gradeMin: '',
+  gradeMax: '',
   location: ''
  })
 
@@ -17,15 +17,18 @@ const ClimbFinder = (props) => {
 
   if (newData.type !== formData.type) {
    if (newData.type === 'Boulder') {
-    newData.grade = climbGrades.boulder[0]
+    newData.gradeMin = climbGrades.boulder[0]
+    newData.gradeMax = climbGrades.boulder[0]
    } else if (newData.type === 'Sport') {
-    newData.grade = climbGrades.sport[0]
-   } else if(newData.type === '') {
-    newData.grade = ''
+    newData.gradeMin = climbGrades.sport[0]
+    newData.gradeMax = climbGrades.sport[0]
+   } else if (newData.type === '') {
+    newData.gradeMin = ''
+    newData.gradeMax = ''
    }
   }
 
-  console.log(newData)
+  // console.log(newData)
   setFormData(newData)
  }
 
@@ -44,7 +47,8 @@ const ClimbFinder = (props) => {
   e.preventDefault()
 
   const submitData = structureSearchData()
-  console.log('submit data' + JSON.stringify(submitData))
+  // console.log('submit data' + JSON.stringify(submitData))
+  handleClimbSearch(submitData)
  }
 
  return (
@@ -66,21 +70,35 @@ const ClimbFinder = (props) => {
     <div>
      {formData.type !== '' ?
       <>
-      <label>Grade</label>
-      {formData.type === 'Boulder' ?
-       <select name="grade" onChange={handleInputChange}>
-        {climbGrades.boulder.map((grade) => (
-         <option key={grade}>{grade}</option>
-        ))}
-       </select>
-       :
-       <select name="grade" onChange={handleInputChange}>
-        {climbGrades.sport.map((grade) => (
-         <option key={grade}>{grade}</option>
-        ))}
-       </select>
+       <label>Grade Range</label>
+       {formData.type === 'Boulder' ?
+        <select name="gradeMin" onChange={handleInputChange}>
+         {climbGrades.boulder.map((grade) => (
+          <option key={grade}>{grade}</option>
+         ))}
+        </select>
+        :
+        <select name="gradeMin" onChange={handleInputChange}>
+         {climbGrades.sport.map((grade) => (
+          <option key={grade}>{grade}</option>
+         ))}
+        </select>
        }
-       </>
+       <p>to</p>
+       {formData.type === 'Boulder' ?
+        <select name="gradeMax" onChange={handleInputChange}>
+         {climbGrades.boulder.map((grade) => (
+          <option key={grade}>{grade}</option>
+         ))}
+        </select>
+        :
+        <select name="gradeMax" onChange={handleInputChange}>
+         {climbGrades.sport.map((grade) => (
+          <option key={grade}>{grade}</option>
+         ))}
+        </select>
+       }
+      </>
       :
       null
      }
