@@ -1,11 +1,15 @@
 import LoginForm from '../../components/LoginForm/LoginForm'
 
 const Login = (props) => {
- const { handleLogin } = props
+ const { user, handleLogin } = props
 
  return (
   <div>
-   <LoginForm handleLogin={handleLogin} />
+   {user ?
+    <LoginForm handleLogin={handleLogin} />
+    :
+    <p>Welcome, {user.username}</p>
+   }
   </div>
  )
 }

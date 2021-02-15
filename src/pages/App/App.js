@@ -47,10 +47,10 @@ function App() {
      <Signup handleSignup={handleSignup} />
     </Route>
     <Route exact path="/login">
-     <Login handleLogin={handleLogin} />
+     <Login user={user} handleLogin={handleLogin} />
     </Route>
     <Route exact path="/routes/new">
-     <AddClimb />
+     <AddClimb user={user} />
     </Route>
    </Switch>
   </div>
