@@ -1,17 +1,15 @@
 import { useState } from 'react'
 
 const AddClimbForm = (props) => {
- const { climbGrades } = props
+ const { user, climbGrades, handleAddClimb } = props
 
  const [formData, setFormData] = useState({
   name: '',
   type: 'Boulder',
   grade: climbGrades.boulder[0],
-  location: ''
+  location: '',
+  addedBy: user.username
  })
-
- // check type moving to and type coming from, display select options based off
- // two unique select boxes, displayed based off render condition ?
 
  const handleInputChange = (e) => {
   const newData = Object.assign({}, formData)
@@ -42,7 +40,7 @@ const AddClimbForm = (props) => {
   e.preventDefault()
 
   if(isValidForm()) {
-   
+   handleAddClimb(formData)
   }
  }
 
@@ -69,6 +67,8 @@ const AddClimbForm = (props) => {
      ))}
     </select>
    }
+   <label>*Location</label>
+   <input name="location" type="text" onChange={handleInputChange} />
    <button>Submit</button>
   </form>
  )

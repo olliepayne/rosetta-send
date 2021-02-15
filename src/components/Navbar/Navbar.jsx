@@ -11,6 +11,7 @@ const Navbar = (props) => {
     {user ?
      <>
       <li><Link to="/routes">Routes</Link></li>
+      <li><Link to="/routes/new">Add Route</Link></li>
       <li><Link to="/login" onClick={handleLogout}>Logout</Link></li>
      </>
      :

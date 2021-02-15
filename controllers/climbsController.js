@@ -5,5 +5,10 @@ module.exports = {
 }
 
 function create(req, res) {
- // create a new climb from our req.body -- form passed from api request
+ Climb.create(req.body)
+  .then((climb) => res.json(climb))
+}
+
+function getOne(req, res) {
+ 
 }

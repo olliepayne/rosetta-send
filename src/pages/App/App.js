@@ -66,6 +66,9 @@ function App() {
     <Route exact path="/routes/new">
      <AddClimb user={user} climbGrades={climbGrades} />
     </Route>
+    <Route exact path="/routes/:id">
+     <div>hello</div>
+    </Route>
    </Switch>
   </div>
  );

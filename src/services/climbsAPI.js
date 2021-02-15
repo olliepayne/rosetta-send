@@ -1,5 +1,12 @@
 const baseURL = '/api/climbs/'
 
 export function create(form) {
- // api call to our backend passing form data for creation
+ return (
+  fetch(baseURL, {
+   method: 'POST',
+   headers: { 'content-type': 'application/json' },
+   body: JSON.stringify(form)
+  }, { mode: 'cors' })
+   .then((res) => res.json())
+ )
 }
