@@ -10,5 +10,7 @@ function create(req, res) {
 }
 
 function getOne(req, res) {
- 
+ // find and return one based of req.params.id
 }
+
+// add search function for our climb finder

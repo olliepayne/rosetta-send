@@ -9,6 +9,7 @@ import Signup from '../Signup/Signup'
 import Login from '../Login/Login'
 import AddClimb from '../AddClimb/AddClimb'
 import ClimbsList from '../ClimbsList/ClimbsList'
+import ClimbDetails from '../ClimbDetails/ClimbDetails'
 
 function App() {
  const history = useHistory()
@@ -83,10 +84,10 @@ function App() {
      <AddClimb user={user} climbGrades={climbGrades} />
     </Route>
     <Route exact path="/routes">
-     <ClimbsList climbsAPI={climbsAPI} />
+     <ClimbsList climbsAPI={climbsAPI} climbGrades={climbGrades} />
     </Route>
     <Route exact path="/routes/:id">
-     <div>hello</div>
+     <ClimbDetails />
     </Route>
    </Switch>
   </div>
