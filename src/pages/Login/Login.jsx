@@ -1,11 +1,11 @@
 import LoginForm from '../../components/LoginForm/LoginForm'
 
 const Login = (props) => {
- const { user, authMessage, handleLogin } = props
+ const { user, authStatus, handleLogin } = props
 
  return (
   <div>
-   {authMessage && <p>{authMessage}</p>}
+   {authStatus && <p>{authStatus}</p>}
    {!user ?
     <LoginForm handleLogin={handleLogin} />
     :

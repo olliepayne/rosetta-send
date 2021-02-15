@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, useHistory } from 'react-router-dom'
 import './App.css';
 import * as authAPI from '../../services/authAPI'
 import Navbar from '../../components/Navbar/Navbar'
@@ -9,7 +9,7 @@ import Login from '../Login/Login'
 import AddClimb from '../AddClimb/AddClimb'
 
 function App() {
- // use history, so we can redirect
+ const history = useHistory()
 
  const boulderGrades = [
   'V0', 'V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8', 'V9', 'V10', 'V11', 'V12', 'V13', 'V14', 'V15', 'V16', 'V17'
@@ -26,14 +26,16 @@ function App() {
  }
 
  const [user, setUser] = useState()
- const [authMessage, setAuthMessage] = useState()
+ const [authStatus, setAuthStatus] = useState()
 
  const handleSignup = async (form) => {
   const result = await authAPI.signup(form)
   if(result._id) {
    setUser(result)
+   setAuthStatus()
+   history.push('/')
   } else {
-   setAuthMessage(result.msg)
+   setAuthStatus(result.msg)
   }
  }
 
@@ -41,8 +43,10 @@ function App() {
   const result = await authAPI.login(form)
   if(result._id) {
    setUser(result)
+   setAuthStatus()
+   history.push('/')
   } else {
-   setAuthMessage(result.msg)
+   setAuthStatus(result.msg)
   }
  }
 
@@ -68,10 +72,10 @@ function App() {
      <Landing user={user} />
     </Route>
     <Route exact path="/signup">
-     <Signup handleSignup={handleSignup} />
+     <Signup authStatus={authStatus} handleSignup={handleSignup} />
     </Route>
     <Route exact path="/login">
-     <Login user={user} authMessage={authMessage} handleLogin={handleLogin} />
+     <Login user={user} authStatus={authStatus} handleLogin={handleLogin} />
     </Route>
     <Route exact path="/routes/new">
      <AddClimb user={user} climbGrades={climbGrades} />
