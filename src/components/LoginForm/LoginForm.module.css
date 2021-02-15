@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
 
 .formContainer {
+ grid-area: main;
+ margin: 20px;
  display: flex;
+ justify-self: center;
  flex-direction: column;
  align-items: center;
  justify-content: center;
