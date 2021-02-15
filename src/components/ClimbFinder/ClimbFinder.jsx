@@ -3,7 +3,7 @@ import { useState } from 'react'
 const ClimbFinder = (props) => {
  const { climbGrades, handleClimbSearch } = props
 
- // form data
+ // implement grade range system
  const [formData, setFormData] = useState({
   name: '',
   type: '',
@@ -29,18 +29,22 @@ const ClimbFinder = (props) => {
   setFormData(newData)
  }
 
- const isValidForm = () => {
+ const structureSearchData = () => {
+  const newData = {}
   for (const key in formData) {
-   if (formData[key] === '') {
-    return false
+   if (formData[key] !== '') {
+    newData[key] = formData[key]
    }
   }
 
-  return true
+  return newData
  }
 
  const handleSubmit = (e) => {
-  // send if form is valid
+  e.preventDefault()
+
+  const submitData = structureSearchData()
+  console.log('submit data' + JSON.stringify(submitData))
  }
 
  return (
@@ -85,6 +89,7 @@ const ClimbFinder = (props) => {
      <label>Location</label>
      <input name="location" type="text" onChange={handleInputChange} />
     </div>
+    <button>Submit</button>
    </form>
   </div>
  )

@@ -1,4 +1,3 @@
-// render our climb finder component, filter routes other users have posted
 // allow us to view a specific climb, if we are the owner we have power to update or delete the climb
 import ClimbFinder from '../../components/ClimbFinder/ClimbFinder'
 
@@ -19,9 +18,13 @@ const ClimbsList = (props) => {
  // handle climb search, use our api passsed through props
  // have a nested array of pages for our search results
 
+ const handleClimbSearch = (form) => {
+  console.log(form)
+ }
+
  return (
   <div>
-   <ClimbFinder climbGrades={climbGrades} />
+   <ClimbFinder climbGrades={climbGrades} handleClimbSearch={handleClimbSearch} />
   </div>
  )
 }
