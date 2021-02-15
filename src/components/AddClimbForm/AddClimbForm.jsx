@@ -6,17 +6,25 @@ const AddClimbForm = (props) => {
  const [formData, setFormData] = useState({
   name: '',
   type: 'Boulder',
-  grade: '',
+  grade: climbGrades.boulder[0],
   location: ''
  })
 
- // dynamically change grade selection based off of climb type
  // check type moving to and type coming from, display select options based off
  // two unique select boxes, displayed based off render condition ?
 
  const handleInputChange = (e) => {
   const newData = Object.assign({}, formData)
   newData[e.target.name] = e.target.value
+  
+  if(newData.type !== formData.type) {
+   if(newData.type === 'Boulder') {
+    newData.grade = climbGrades.boulder[0]
+   } else if(newData.type === 'Sport') {
+    newData.grade = climbGrades.sport[0]
+   }
+  }
+
   setFormData(newData)
  }
 
@@ -50,14 +58,14 @@ const AddClimbForm = (props) => {
    <label>*Grade</label>
    {formData.type === 'Boulder' ?
     <select name="grade" onChange={handleInputChange}>
-     {climbGrades.boulder.map((grade, index) => (
-      <option key={index}>{grade}</option>
+     {climbGrades.boulder.map((grade) => (
+      <option key={grade}>{grade}</option>
      ))}
     </select>
     :
     <select name="grade" onChange={handleInputChange}>
-     {climbGrades.sport.map((grade, index) => (
-      <option key={index}>{grade}</option>
+     {climbGrades.sport.map((grade) => (
+      <option key={grade}>{grade}</option>
      ))}
     </select>
    }
