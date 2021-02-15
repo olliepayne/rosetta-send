@@ -60,12 +60,17 @@ function login(req, res) {
 function getUser(req, res) {
  const token = req.cookies.token
  if(token) {
-  const user = jwt.verify(token, process.env.JWT_SECRET)
-  res.json(user)
+  const payload = jwt.verify(token, process.env.JWT_SECRET)
+  res.json(payload.user)
  }
 }
 
 function logout(req, res) {
  const token = req.cookies.token
- if(token) res.clearCookie('token')
+ if(token) {
+  res.clearCookie('token')
+  res.json({ msg: 'Logged out.' })
+ } else {
+  res.json({ msg: 'You must be logged in to log out.' })
+ }
 }

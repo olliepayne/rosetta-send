@@ -12,6 +12,7 @@ function App() {
 
  const handleSignup = async (form) => {
   const result = await authAPI.signup(form)
+  console.log(result.status)
   setUser(result)
  }
 
@@ -22,11 +23,12 @@ function App() {
 
  const handleGetUser = async () => {
   const result = await authAPI.getUser()
+  console.log(result)
   setUser(result)
  }
 
- const handleLogout = () => {
-  authAPI.logout()
+ const handleLogout = async () => {
+  await authAPI.logout()
   setUser()
  }
 
@@ -39,7 +41,7 @@ function App() {
    <Navbar user={user} handleLogout={handleLogout} />
    <Switch>
     <Route exact path="/">
-     <Landing />
+     <Landing user={user} />
     </Route>
     <Route exact path="/signup">
      <Signup handleSignup={handleSignup} />
