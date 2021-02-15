@@ -23,7 +23,6 @@ function App() {
 
  const handleGetUser = async () => {
   const result = await authAPI.getUser()
-  console.log(result)
   setUser(result)
  }
 

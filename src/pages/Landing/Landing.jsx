@@ -6,7 +6,6 @@ const Landing = (props) => {
  return (
   <div>
    Home
-   {user && <p>{user.username}</p>}
   </div>
  )
 }
