@@ -8,10 +8,7 @@ router.post('/signup', authCtrl.signup)
 router.post('/login', authCtrl.login)
 
 // - - - private routes - - -
-// router.get('/getUser', authMiddleware.checkAuth, authCtrl.getUser)
-// router.get('/logout', authMiddleware.checkAuth, authCtrl.logout)
-
-router.get('/getUser', authCtrl.getUser)
-router.get('/logout', authCtrl.logout)
+router.get('/getUser', authMiddleware.checkAuth, authCtrl.getUser)
+router.get('/logout', authMiddleware.checkAuth, authCtrl.logout)
 
 module.exports = router

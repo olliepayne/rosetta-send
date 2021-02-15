@@ -25,7 +25,7 @@ function App() {
   setUser(result)
  }
 
- const handleLogout = async () => {
+ const handleLogout = () => {
   authAPI.logout()
   setUser()
  }

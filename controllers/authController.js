@@ -31,7 +31,7 @@ function signup(req, res) {
     newUser.save()
      .then((savedUser) => {
       const token = jwt.sign({ user: savedUser }, process.env.JWT_SECRET)
-      res.cookie("token", token, { maxAge: 1000 * 60 * 60 * 24, httpOnly: true, secure: true })
+      res.cookie("token", token, { maxAge: 1000 * 60 * 60 * 24, httpOnly: true })
       res.json({ token })
      })
    })
@@ -51,21 +51,21 @@ function login(req, res) {
     if (!match) return res.status(400).json({ msg: 'Invalid Credentials.' })
 
     const token = jwt.sign({ user }, process.env.JWT_SECRET)
-    res.cookie("token", token, { maxAge: 1000 * 60 * 60 * 24, httpOnly: true, secure: true })
+    res.cookie("token", token, { maxAge: 1000 * 60 * 60 * 24, httpOnly: true })
     res.json({ token })
    })
   })
 }
 
 function getUser(req, res) {
- // const token = req.cookies['token']
- // if(token || token !== '') {
- //  const user = jwt.verify(token, process.env.JWT_SECRET)
- //  res.json(user)
- // }
+ const token = req.cookies.token
+ if(token) {
+  const user = jwt.verify(token, process.env.JWT_SECRET)
+  res.json(user)
+ }
 }
 
 function logout(req, res) {
- const token = req.cookies['token']
+ const token = req.cookies.token
  if(token) res.clearCookie('token')
 }
