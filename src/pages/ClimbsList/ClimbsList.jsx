@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import ClimbsListCSS from './ClimbsList.module.css'
 import ClimbFinder from '../../components/ClimbFinder/ClimbFinder'
 
 const SearchResults = (props) => {
@@ -34,8 +35,9 @@ const ClimbsList = (props) => {
    }
 
    tempArr.push(newPage)
-   setSearchResults(tempArr)
   }
+
+  setSearchResults(tempArr)
  }
 
  const handleClimbSearch = async (form) => {
@@ -43,7 +45,21 @@ const ClimbsList = (props) => {
   divideSearchResults(results)
  }
 
- // add page navigation (for search results)
+ const loadNextResults = () => {
+  setPage(page + 1 === searchResults.length ? 0 : page + 1)
+ }
+
+ const loadLastResults = () => {
+  setPage(searchResults.length - 1)
+ }
+
+ const loadPreviousResults = () => {
+  setPage(page - 1 < 0 ? searchResults.length - 1 : page - 1)
+ }
+
+ const loadFirstResults = () => {
+  setPage(0)
+ }
 
  return (
   <div>
@@ -51,6 +67,13 @@ const ClimbsList = (props) => {
    {searchResults ?
     <div>
      <SearchResults results={searchResults[page]} />
+     <div className={ClimbsListCSS.resultsControlContainer}>
+      <p className={ClimbsListCSS.resultsControlBtn} onClick={loadFirstResults}>{'<<'}</p>
+      <p className={ClimbsListCSS.resultsControlBtn} onClick={loadPreviousResults}>{'<'}</p>
+      <p className={ClimbsListCSS.resultsPageCount}>{page + 1}/{searchResults.length}</p>
+      <p className={ClimbsListCSS.resultsControlBtn} onClick={loadNextResults}>{'>'}</p>
+      <p className={ClimbsListCSS.resultsControlBtn} onClick={loadLastResults}>{'>>'}</p>
+     </div>
     </div>
     :
     <p></p>

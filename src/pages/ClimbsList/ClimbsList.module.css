@@ -1,0 +1,18 @@
+.resultsControlContainer {
+ display: flex;
+ align-items: center;
+}
+
+.resultsPageCount {
+ margin: 0 10px;
+}
+
+.resultsControlBtn {
+ text-decoration: underline;
+ margin: 0 5px;
+}
+
+.resultsControlBtn:hover {
+ cursor: pointer;
+ color: cornflowerblue;
+}
