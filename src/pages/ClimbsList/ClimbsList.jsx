@@ -1,13 +1,18 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import ClimbFinder from '../../components/ClimbFinder/ClimbFinder'
 
 const SearchResults = (props) => {
- // destruct the props here
+ const { results } = props
  // map a list for the results which were passed
 
  return (
   <div>
-   
+   <ul>
+    {results.map((climb) => (
+     <li key={climb._id}><Link to={`/routes/${climb._id}`}>{climb.name}</Link></li>
+    ))}
+   </ul>
   </div>
  )
 }
@@ -43,7 +48,13 @@ const ClimbsList = (props) => {
  return (
   <div>
    <ClimbFinder climbGrades={climbGrades} handleClimbSearch={handleClimbSearch} />
-   <SearchResults page={page} results={searchResults[page]} />
+   {searchResults ?
+    <div>
+     <SearchResults results={searchResults[page]} />
+    </div>
+    :
+    <p></p>
+   }
   </div>
  )
 }
