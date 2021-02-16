@@ -15,12 +15,27 @@ const SearchResults = (props) => {
 const ClimbsList = (props) => {
  const { climbsAPI, climbGrades } = props
 
- // have a nested array of pages for our search results
  const [searchResults, setSearchResults] = useState()
+ const [page, setPage] = useState(0)
+ const resultsPerPage = 2
+
+ const divideSearchResults = (results) => {
+  const tempArr = []
+  for(let i = 0; i < results.length / resultsPerPage; i++) {
+   const newPage = []
+   for(let j = 0; j < resultsPerPage; j++) {
+    const index = i * resultsPerPage + j
+    if(results[index]) newPage.push(results[index])
+   }
+
+   tempArr.push(newPage)
+   setSearchResults(tempArr)
+  }
+ }
 
  const handleClimbSearch = async (form) => {
-  const result = await climbsAPI.search(form)
-  
+  const results = await climbsAPI.search(form)
+  divideSearchResults(results)
  }
 
  return (

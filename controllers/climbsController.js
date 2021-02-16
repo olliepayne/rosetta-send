@@ -30,6 +30,8 @@ function getOne(req, res) {
 }
 
 function search(req, res) {
+ // add a more useable name and location filter
+
  const filters = Object.assign({}, req.body)
 
  Climb.find({})
