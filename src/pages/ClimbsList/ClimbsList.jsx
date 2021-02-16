@@ -38,9 +38,12 @@ const ClimbsList = (props) => {
   divideSearchResults(results)
  }
 
+ // add page navigation (for search results)
+
  return (
   <div>
    <ClimbFinder climbGrades={climbGrades} handleClimbSearch={handleClimbSearch} />
+   <SearchResults page={page} results={searchResults[page]} />
   </div>
  )
 }
