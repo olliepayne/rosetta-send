@@ -1,23 +1,46 @@
 .climbsListPage {
- /* display: grid;
+ display: grid;
  grid-template-areas:
   "nav nav nav"
   "left main feed"
-  "left search-results feed"; */
-}
-
-.climbFinder {
- /* grid-area: main; */
- margin: 20px;
+  "left search-results feed";
 }
 
 .searchResultsContainer {
  grid-area: search-results;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
 }
 
 .resultsControlContainer {
  display: flex;
  align-items: center;
+}
+
+.resultsList {
+ list-style-type: none;
+ padding: 0;
+}
+
+.resultsList li {
+ margin-bottom: 5px;
+}
+
+.resultsList a {
+ color: black;
+}
+
+.resultsList a:hover {
+ opacity: 50%;
+}
+
+.evenResult {
+ 
+}
+
+.oddResult {
+ background-color: rgb(228, 238, 255);
 }
 
 .resultsPageCount {

@@ -1,6 +1,0 @@
-.loginPage {
- display: grid;
- grid-template-areas:
-  "nav"
-  "main";
-}

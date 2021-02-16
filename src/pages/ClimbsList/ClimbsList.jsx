@@ -8,9 +8,11 @@ const SearchResults = (props) => {
 
  return (
   <div>
-   <ul>
-    {results.map((climb) => (
-     <li key={climb._id}><Link to={`/routes/${climb._id}`}>{climb.name}</Link></li>
+   <ul className={ClimbsListCSS.resultsList}>
+    {results.map((climb, index) => (
+     <li className={index % 2 === 0 ? ClimbsListCSS.evenResult : ClimbsListCSS.oddResult} key={climb._id}>
+      <Link to={`/routes/${climb._id}`}>{climb.name} / {climb.grade} / {climb.location} / submitted by {climb.addedBy}</Link>
+     </li>
     ))}
    </ul>
   </div>
@@ -23,7 +25,7 @@ const ClimbsList = (props) => {
  const [searchResults, setSearchResults] = useState()
  const [totalResults, setTotalResults] = useState(0)
  const [page, setPage] = useState(0)
- const resultsPerPage = 2
+ const resultsPerPage = 5
 
  const divideSearchResults = (results) => {
   const tempArr = []
