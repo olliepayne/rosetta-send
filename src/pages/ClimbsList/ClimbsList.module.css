@@ -2,11 +2,16 @@
  display: grid;
  grid-template-areas:
   "nav nav nav"
-  "left main feed";
+  "left main feed"
+  "left search-results feed";
 }
 
 .climbFinder {
  grid-area: main;
+}
+
+.searchResultsContainer {
+ grid-area: search-results;
 }
 
 .resultsControlContainer {

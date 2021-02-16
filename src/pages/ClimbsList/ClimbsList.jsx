@@ -21,30 +21,38 @@ const ClimbsList = (props) => {
  const { climbsAPI, climbGrades } = props
 
  const [searchResults, setSearchResults] = useState()
+ const [totalResults, setTotalResults] = useState(0)
  const [page, setPage] = useState(0)
  const resultsPerPage = 2
 
  const divideSearchResults = (results) => {
   const tempArr = []
+  let resultsCount = 0
   for(let i = 0; i < results.length / resultsPerPage; i++) {
    const newPage = []
    for(let j = 0; j < resultsPerPage; j++) {
     const index = i * resultsPerPage + j
-    if(results[index]) newPage.push(results[index])
+    if(results[index]) {
+     newPage.push(results[index])
+     resultsCount++
+    } else {
+     break
+    }
    }
 
    tempArr.push(newPage)
+   setTotalResults(resultsCount)
   }
 
   setSearchResults(tempArr)
  }
 
- //#region Search Results Navigation
  const handleClimbSearch = async (form) => {
   const results = await climbsAPI.search(form)
   divideSearchResults(results)
  }
 
+  //#region Search Results Navigation
  const loadNextResults = () => {
   setPage(page + 1 === searchResults.length ? 0 : page + 1)
  }
@@ -66,12 +74,13 @@ const ClimbsList = (props) => {
   <div className={ClimbsListCSS.climbsListPage}>
    <ClimbFinder className={ClimbsListCSS.climbFinder} climbGrades={climbGrades} handleClimbSearch={handleClimbSearch} />
    {searchResults ?
-    <div>
-     <SearchResults results={searchResults[page]} />
+    <div className={ClimbsListCSS.searchResultsContainer}>
+     {searchResults.length > 0 ? <p>Found {totalResults} matching results...</p> : <p>No matching results...</p>}
+     {searchResults.length > 0 && <SearchResults results={searchResults[page]} />}
      <div className={ClimbsListCSS.resultsControlContainer}>
       <p className={ClimbsListCSS.resultsControlBtn} onClick={loadFirstResults}>{'<<'}</p>
       <p className={ClimbsListCSS.resultsControlBtn} onClick={loadPreviousResults}>{'<'}</p>
-      <p className={ClimbsListCSS.resultsPageCount}>{page + 1}/{searchResults.length}</p>
+      <p className={ClimbsListCSS.resultsPageCount}>{page + 1}/{searchResults.length > 0 ? searchResults.length : 1}</p>
       <p className={ClimbsListCSS.resultsControlBtn} onClick={loadNextResults}>{'>'}</p>
       <p className={ClimbsListCSS.resultsControlBtn} onClick={loadLastResults}>{'>>'}</p>
      </div>
