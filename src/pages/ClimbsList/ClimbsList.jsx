@@ -5,7 +5,6 @@ import ClimbFinder from '../../components/ClimbFinder/ClimbFinder'
 
 const SearchResults = (props) => {
  const { results } = props
- // map a list for the results which were passed
 
  return (
   <div>
@@ -40,6 +39,7 @@ const ClimbsList = (props) => {
   setSearchResults(tempArr)
  }
 
+ //#region Search Results Navigation
  const handleClimbSearch = async (form) => {
   const results = await climbsAPI.search(form)
   divideSearchResults(results)
@@ -60,10 +60,11 @@ const ClimbsList = (props) => {
  const loadFirstResults = () => {
   setPage(0)
  }
+ //#endregion
 
  return (
-  <div>
-   <ClimbFinder climbGrades={climbGrades} handleClimbSearch={handleClimbSearch} />
+  <div className={ClimbsListCSS.climbsListPage}>
+   <ClimbFinder className={ClimbsListCSS.climbFinder} climbGrades={climbGrades} handleClimbSearch={handleClimbSearch} />
    {searchResults ?
     <div>
      <SearchResults results={searchResults[page]} />

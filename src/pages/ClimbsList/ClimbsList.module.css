@@ -1,3 +1,14 @@
+.climbsListPage {
+ display: grid;
+ grid-template-areas:
+  "nav nav nav"
+  "left main feed";
+}
+
+.climbFinder {
+ grid-area: main;
+}
+
 .resultsControlContainer {
  display: flex;
  align-items: center;

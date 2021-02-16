@@ -47,7 +47,7 @@ function search(req, res) {
 
    if(filters['gradeMin'] && filters['gradeMax']) {
     if(filters['type'] === 'Boulder') {
-     filteredClimbs = filteredClimbs.filter((climb) => climbGrades.boulder.indexOf(climb.grade) <= climbGrades.boulder.indexOf(filters.gradeMax))
+     filteredClimbs = filteredClimbs.filter((climb) => climbGrades.boulder.indexOf(climb.grade) >= climbGrades.boulder.indexOf(filters.gradeMin) && climbGrades.boulder.indexOf(climb.grade) <= climbGrades.boulder.indexOf(filters.gradeMax))
     } else if(filters['type'] === 'Sport') {
      filteredClimbs = filteredClimbs.filter((climb) => climbGrades.sport.indexOf(climb.grade) <= climbGrades.sport.indexOf(filters.gradeMax))
     }
