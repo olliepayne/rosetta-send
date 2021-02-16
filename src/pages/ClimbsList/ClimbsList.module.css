@@ -1,13 +1,14 @@
 .climbsListPage {
- display: grid;
+ /* display: grid;
  grid-template-areas:
   "nav nav nav"
   "left main feed"
-  "left search-results feed";
+  "left search-results feed"; */
 }
 
 .climbFinder {
- grid-area: main;
+ /* grid-area: main; */
+ margin: 20px;
 }
 
 .searchResultsContainer {

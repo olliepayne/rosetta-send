@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import ClimbFinderCSS from './ClimbFinder.module.css'
 
 const ClimbFinder = (props) => {
  const { climbGrades, handleClimbSearch } = props
@@ -28,7 +29,6 @@ const ClimbFinder = (props) => {
    }
   }
 
-  // console.log(newData)
   setFormData(newData)
  }
 
@@ -47,19 +47,18 @@ const ClimbFinder = (props) => {
   e.preventDefault()
 
   const submitData = structureSearchData()
-  // console.log('submit data' + JSON.stringify(submitData))
   handleClimbSearch(submitData)
  }
 
  return (
-  <div>
+  <div className={ClimbFinderCSS.climbFinder}>
    <h3>Route Finder</h3>
    <form onSubmit={handleSubmit}>
-    <div>
+    <div className={ClimbFinderCSS.formEntry}>
      <label>Name</label>
      <input name="name" type="text" onChange={handleInputChange} />
     </div>
-    <div>
+    <div className={ClimbFinderCSS.formEntry}>
      <label>Type</label>
      <select name="type" onChange={handleInputChange}>
       <option value={''}>All</option>
@@ -67,7 +66,7 @@ const ClimbFinder = (props) => {
       <option>Sport</option>
      </select>
     </div>
-    <div>
+    <div className={ClimbFinderCSS.formEntry}>
      {formData.type !== '' ?
       <>
        <label>Grade Range</label>
@@ -103,11 +102,11 @@ const ClimbFinder = (props) => {
       null
      }
     </div>
-    <div>
+    <div className={ClimbFinderCSS.formEntry}>
      <label>Location</label>
      <input name="location" type="text" onChange={handleInputChange} />
     </div>
-    <button>Submit</button>
+    <button className={ClimbFinderCSS.submitBtn}>Search!</button>
    </form>
   </div>
  )

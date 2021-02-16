@@ -38,6 +38,7 @@ const LoginForm = (props) => {
 
  return (
   <div className={LoginFormCSS.formContainer}>
+   <h3>Login</h3>
    {!isComplete && <p className={LoginFormCSS.formMessage}>Please enter all credentials.</p>}
    {statusCode && isComplete ? <p className={LoginFormCSS.statusCode}>{statusCode}</p> : null}
    <form className={LoginFormCSS.loginForm} onSubmit={handleSubmit}>
