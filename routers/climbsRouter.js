@@ -4,7 +4,7 @@ const authMiddleware = require('../config/authMiddleware')
 const climbsCtrl = require('../controllers/climbsController')
 
 // - - - public routes - - -
-router.post('/:id', climbsCtrl.create)
+router.post('/search', climbsCtrl.search)
 
 // - - - private routes - - -
 router.post('/', authMiddleware.checkAuth, climbsCtrl.create)

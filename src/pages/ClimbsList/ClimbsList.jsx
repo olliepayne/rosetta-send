@@ -1,4 +1,4 @@
-// allow us to view a specific climb, if we are the owner we have power to update or delete the climb
+import { useState } from 'react'
 import ClimbFinder from '../../components/ClimbFinder/ClimbFinder'
 
 const SearchResults = (props) => {
@@ -15,11 +15,12 @@ const SearchResults = (props) => {
 const ClimbsList = (props) => {
  const { climbsAPI, climbGrades } = props
 
- // handle climb search, use our api passsed through props
  // have a nested array of pages for our search results
+ const [searchResults, setSearchResults] = useState()
 
- const handleClimbSearch = (form) => {
-  console.log(form)
+ const handleClimbSearch = async (form) => {
+  const result = await climbsAPI.search(form)
+  
  }
 
  return (
