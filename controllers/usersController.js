@@ -21,7 +21,7 @@ function addSubmittedClimb(req, res) {
 function getSubmittedClimbs(req, res) {
  User.findById(req.params.id)
   .populate('submittedClimbs')
-  .then((user) => {
+  .exec((err, user) => {
    if(user.submittedClimbs) res.json(user.submittedClimbs)
   })
 }

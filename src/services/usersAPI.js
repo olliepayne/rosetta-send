@@ -11,7 +11,7 @@ export function addSubmittedClimb(id, climb) {
 export function getSubmittedClimbs(id) {
  return (
   fetch(baseURL + id + '/getSubmittedClimbs', { mode: 'cors' })
-   .then((res) => res.json)
+   .then((res) => res.json())
  )
 }
 
