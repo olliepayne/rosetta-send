@@ -18,6 +18,7 @@ module.exports = {
  create,
  getOne,
  update,
+ delete: deleteOne,
  search
 }
 
@@ -39,6 +40,10 @@ function update(req, res) {
   .then((climb) => {
    res.json(climb)
   })
+}
+
+function deleteOne(req, res) {
+ Climb.findByIdAndDelete(req.params.id)
 }
 
 function search(req, res) {

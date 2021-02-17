@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import ClimbDetailsCSS from './ClimbDetails.module.css'
 import UpdateClimbForm from '../../components/UpdateClimbForm/UpdateClimbForm'
 
 const ClimbDetails = (props) => {
  const { id } = useParams()
+ const history = useHistory()
 
  const { user, climbsAPI, climbGrades } = props
 
@@ -16,9 +17,19 @@ const ClimbDetails = (props) => {
   setClimb(result)
  }
 
+ const handleShowForm = () => {
+  const newVal = !showUpdateForm
+  setShowUpdateForm(newVal)
+ }
+
  const handleUpdateClimb = async (form) => {
   const result = climbsAPI.update(id, form)
   setClimb(result)
+ }
+ 
+ const handleDeleteClimb = () => {
+  climbsAPI.deleteOne(id)
+  history.push('/routes')
  }
 
  useEffect(() => {
@@ -36,14 +47,17 @@ const ClimbDetails = (props) => {
        <p><span style={{ fontStyle: 'italic' }}>submitted by {climb.addedBy}</span></p>
        {user.username === climb.addedBy &&
         <div className={ClimbDetailsCSS.btnContainer}>
-         <button onClick={setShowUpdateForm(!showUpdateForm)} className={ClimbDetailsCSS.updateBtn}>Update</button>
-         <button className={ClimbDetailsCSS.deleteBtn}>Delete</button>
+         <button onClick={handleShowForm} className={ClimbDetailsCSS.updateBtn}>Update</button>
+         <button onClick={handleDeleteClimb} className={ClimbDetailsCSS.deleteBtn}>Delete</button>
         </div>
        }
       </div>
      </div>
      :
-     <UpdateClimbForm climb={climb} climbGrades={climbGrades} handleUpdateClimb={handleUpdateClimb} />
+     <>
+      <UpdateClimbForm climb={climb} climbGrades={climbGrades} handleUpdateClimb={handleUpdateClimb} />
+      <button onClick={handleShowForm} className={ClimbDetailsCSS.updateBtn}>Cancel</button>
+     </>
     :
     <p>Loading...</p>
    }

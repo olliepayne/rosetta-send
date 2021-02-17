@@ -30,7 +30,6 @@ export function search(form) {
 }
 
 export function update(id, form) {
- console.log('called')
  return (
   fetch(baseURL + id, {
    method: 'PUT',
@@ -41,4 +40,10 @@ export function update(id, form) {
  )
 }
 
-// delete function
+export function deleteOne(id) {
+ return (
+  fetch(baseURL + id, {
+   method: 'DELETE',
+  }, { mode: 'cors' })
+ )
+}
