@@ -43,7 +43,11 @@ function update(req, res) {
 }
 
 function deleteOne(req, res) {
+ console.log(req.params.id)
  Climb.findByIdAndDelete(req.params.id)
+  .then((climb) => {
+   if(climb) res.json({ msg: 'Climb deleted succesfully' })
+  })
 }
 
 function search(req, res) {
