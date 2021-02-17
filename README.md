@@ -1,71 +1,52 @@
-# Getting Started with Create React App
+# Rosetta Send
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## [Deployment Link](https://blooming-retreat-36750.herokuapp.com/)
+<hr>
+**Known Bugs**
+<br>
+The CSS transitions present on the buttons dissappeared during deployment.
 
-## Available Scripts
+<hr>
 
-In the project directory, you can run:
+### About
+I built Rosetta Send as an homage to my love and pursuit of elite sport climbing. The app allows a user to add a route, of any name/type/grade/location, which can then be searched by anybody using the built in Route Finder. The user can also view their profile of submitted climbs, and delete their account if they choose to. It is a full CRUD, MERN stack application. I began building this during my time with General Assembly.
 
-### `npm start`
+### Screenshots
+<a href="https://imgur.com/wNCAcdK"><img src="https://i.imgur.com/wNCAcdK.png" title="source: imgur.com" /></a>
+Route Finder specificty
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<a href="https://imgur.com/hJNZWZp"><img src="https://i.imgur.com/hJNZWZp.png" title="source: imgur.com" /></a>
+Route Finder displaying all routes
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<a href="https://imgur.com/SbBXmQY"><img src="https://i.imgur.com/SbBXmQY.png" title="source: imgur.com" /></a>
+Update Route
 
-### `npm test`
+<a href="https://imgur.com/XlBrULC"><img src="https://i.imgur.com/XlBrULC.png" title="source: imgur.com" /></a>
+Signup Page
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<a href="https://imgur.com/dxNawLk"><img src="https://i.imgur.com/dxNawLk.png" title="source: imgur.com" /></a>
+Route Details
 
-### `npm run build`
+<a href="https://imgur.com/rERctUz"><img src="https://i.imgur.com/rERctUz.png" title="source: imgur.com" /></a>
+User Profile
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Technologies Used
+I bult the MERN stack app using the following:
+* MongoDB
+* ExpressJS
+* ReactJS
+* NodeJS
+* JWT Authentication
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Favorites
+Besides implementing auth scratch, I am extremely proud of the Route Finder, and the handler I built to manage and divide our the search results from the Route Finder into separate pages.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Growth
+Choosing to incorporate authentication from scratch using JSON Web Tokens as opposed to using the provided template given to me by General Assembly, taught me many of React's nuances and heavily reinforced and developed my skill of working with the backend. Incorporating this was my biggest challenge, but doing so grew my as a developer in every sense. I am extremely proud of the JWT integration and the communication between the User, the Frontend, and the Backend.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# rosetta-send-v2
+#### Icebox
+(In no partucular order)
+* A looser name/location search in the Route Finder. I intend to splice the search string into individual words, do the same on the backend and look for comparisons between the two.
+* Allow users to ' wishlist ' routes. Basically a ToDo list.
+* Add a custom logo / incorporate this logo into tiling on page styling
+* Route ratings / Consumer grades. Have a posted official grade and an average of consumer grades
