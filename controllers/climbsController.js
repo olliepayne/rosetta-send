@@ -17,6 +17,7 @@ const climbGrades = {
 module.exports = {
  create,
  getOne,
+ update,
  search
 }
 
@@ -30,6 +31,13 @@ function getOne(req, res) {
   .then((climb) => {
    if(climb) return res.json(climb)
    return res.json({ msg: 'Route does not exist!' })
+  })
+}
+
+function update(req, res) {
+ Climb.findByIdAndUpdate(req.params.id, req.body, { new: true })
+  .then((climb) => {
+   res.json(climb)
   })
 }
 

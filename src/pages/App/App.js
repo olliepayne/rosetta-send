@@ -87,7 +87,7 @@ function App() {
      <ClimbsList climbsAPI={climbsAPI} climbGrades={climbGrades} />
     </Route>
     <Route exact path="/routes/:id">
-     <ClimbDetails user={user} climbsAPI={climbsAPI} />
+     <ClimbDetails user={user} climbsAPI={climbsAPI} climbGrades={climbGrades} />
     </Route>
    </Switch>
   </div>

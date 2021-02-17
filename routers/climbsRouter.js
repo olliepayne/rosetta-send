@@ -9,5 +9,6 @@ router.get('/:id', climbsCtrl.getOne)
 
 // - - - private routes - - -
 router.post('/', authMiddleware.checkAuth, climbsCtrl.create)
+router.put('/:id', authMiddleware.checkAuth, climbsCtrl.update)
 
 module.exports = router
