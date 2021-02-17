@@ -1,11 +1,11 @@
-import LoginCSS from './Login.module.css'
+import CSS from './Login.module.css'
 import LoginForm from '../../components/LoginForm/LoginForm'
 
 const Login = (props) => {
  const { user, statusCode, handleLogin } = props
 
  return (
-  <div className={LoginCSS.loginPage}>
+  <div className={CSS.page}>
    {!user ?
     <LoginForm statusCode={statusCode} handleLogin={handleLogin} />
     :

@@ -8,6 +8,5 @@ const usersCtrl = require('../controllers/usersController')
 // - - - private routes - - -
 router.post('/:id/addSubmittedClimb', authMiddleware.checkAuth, usersCtrl.addSubmittedClimb)
 router.get('/:id/getSubmittedClimbs', authMiddleware.checkAuth, usersCtrl.getSubmittedClimbs)
-router.delete('/:id', authMiddleware.checkAuth, usersCtrl.delete)
 
 module.exports = router

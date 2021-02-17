@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import LoginFormCSS from './LoginForm.module.css'
+import { Link } from 'react-router-dom'
+import CSS from './LoginForm.module.css'
 
 const LoginForm = (props) => {
  const { statusCode, handleLogin } = props
@@ -37,20 +38,23 @@ const LoginForm = (props) => {
  }
 
  return (
-  <div className={LoginFormCSS.formContainer}>
+  <div className={CSS.formContainer}>
    <h3>Login</h3>
-   {!isComplete && <p className={LoginFormCSS.formMessage}>Please enter all credentials.</p>}
-   {statusCode && isComplete ? <p className={LoginFormCSS.statusCode}>{statusCode}</p> : null}
-   <form className={LoginFormCSS.loginForm} onSubmit={handleSubmit}>
-    <div className={LoginFormCSS.formEntry}>
+   {!isComplete && <p className={CSS.formMessage}>Please enter all credentials.</p>}
+   {statusCode && isComplete ? <p className={CSS.statusCode}>{statusCode}</p> : null}
+   <form className={CSS.loginForm} onSubmit={handleSubmit}>
+    <div className={CSS.formEntry}>
      <label>*Email</label>
      <input name="email" type="text" onChange={handleInputChange} />
     </div>
-    <div className={LoginFormCSS.formEntry}>
+    <div className={CSS.formEntry}>
      <label>*Password</label>
      <input name="password" type="password" onChange={handleInputChange} />
     </div>
-    <button className={LoginFormCSS.submitBtn}>Submit</button>
+    <div className={CSS.pageControl}>
+     <button className={CSS.submitBtn}>Submit</button>
+     <Link to="/signup">Need an account? Signup</Link>
+    </div>
    </form>
   </div>
  )

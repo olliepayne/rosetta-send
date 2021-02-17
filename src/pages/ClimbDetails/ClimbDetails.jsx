@@ -49,7 +49,7 @@ const ClimbDetails = (props) => {
        <h3>{climb.name}</h3>
        <p>{climb.grade} / {climb.location}</p>
        <p><span style={{ fontStyle: 'italic' }}>submitted by {climb.addedBy}</span></p>
-       {user.username === climb.addedBy &&
+       {user && user.username === climb.addedBy &&
         <div className={ClimbDetailsCSS.btnContainer}>
          <button onClick={handleShowForm} className={ClimbDetailsCSS.updateBtn}>Update</button>
          <button onClick={handleDeleteClimb} className={ClimbDetailsCSS.deleteBtn}>Delete</button>

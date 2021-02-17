@@ -1,13 +1,8 @@
 const User = require('../models/User')
 
 module.exports = {
- delete: deleteOne,
  addSubmittedClimb,
  getSubmittedClimbs
-}
-
-function deleteOne(req, res) {
-
 }
 
 function addSubmittedClimb(req, res) {
