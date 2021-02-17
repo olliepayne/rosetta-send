@@ -5,6 +5,7 @@ const climbsCtrl = require('../controllers/climbsController')
 
 // - - - public routes - - -
 router.post('/search', climbsCtrl.search)
+router.get('/:id', climbsCtrl.getOne)
 
 // - - - private routes - - -
 router.post('/', authMiddleware.checkAuth, climbsCtrl.create)

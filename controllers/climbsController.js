@@ -26,7 +26,11 @@ function create(req, res) {
 }
 
 function getOne(req, res) {
- // find and return one based of req.params.id
+ Climb.findById(req.params.id)
+  .then((climb) => {
+   if(climb) return res.json(climb)
+   return res.json({ msg: 'Route does not exist!' })
+  })
 }
 
 function search(req, res) {

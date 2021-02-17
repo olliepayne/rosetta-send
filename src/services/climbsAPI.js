@@ -11,6 +11,13 @@ export function create(form) {
  )
 }
 
+export function getOne(id) {
+ return (
+  fetch(baseURL + id, { mode: 'cors' })
+   .then((res) => res.json())
+ )
+}
+
 export function search(form) {
  return (
   fetch(baseURL + 'search', {
@@ -21,3 +28,7 @@ export function search(form) {
    .then((res) => res.json())
  )
 }
+
+// update function
+
+// delete function
