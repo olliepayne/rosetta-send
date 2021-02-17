@@ -1,27 +1,37 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import CSS from './Profile.module.css'
-import UpdateUserForm from '../../components/UpdateUserForm/UpdateUserForm'
 
 // show climbs we submitted, and our wishlist
 
 const Profile = (props) => {
- const { user } = props
+ const { id } = useParams()
 
- const [showForm, setShowForm] = useState()
+ const { user, authAPI, usersAPI } = props
 
- // update
+ const [submittedClimbs, setSubmittedClimbs] = useState({})
+ const [wishlist, setWishlist] = useState()
 
- // delete
+ const handleGetSubmittedClimbs = async () => {
+  const results = await usersAPI.getSubmittedClimbs(id)
+  console.log(results)
+ }
+
+ const handleGetWishlist = async () => {
+  // follow previous pattern
+ }
+
+ const handleDeleteUser = () => {
+  // delete user ** clear cookie -- authAPI
+ }
+
+ useEffect(() => {
+  handleGetSubmittedClimbs()
+ }, [])
 
  return (
   <div className={CSS.page}>
-   {!showForm ?
-    <div className={CSS.profileContainer}>
-     
-    </div>
-    :
-    <UpdateUserForm />
-   }
+   
   </div>
  )
 }

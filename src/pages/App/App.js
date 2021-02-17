@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Route, Switch, Redirect, useHistory } from 'react-router-dom'
 import './App.css';
 import * as authAPI from '../../services/authAPI'
+import * as usersAPI from '../../services/usersAPI'
 import * as climbsAPI from '../../services/climbsAPI'
 import Navbar from '../../components/Navbar/Navbar'
 import ErrorPage from '../../pages/ErrorPage/ErrorPage'
@@ -84,13 +85,13 @@ function App() {
     </Route>
     <Route exact path="/profile/:id">
      {user ?
-      <Profile user={user} />
+      <Profile user={user} authAPI={authAPI} usersAPI={usersAPI} />
       :
       <Redirect to="/login" />
      }
     </Route>
     <Route exact path="/routes/new">
-     <AddClimb user={user} climbGrades={climbGrades} />
+     <AddClimb user={user} usersAPI={usersAPI} climbGrades={climbGrades} />
     </Route>
     <Route exact path="/routes">
      <ClimbsList climbsAPI={climbsAPI} climbGrades={climbGrades} />
