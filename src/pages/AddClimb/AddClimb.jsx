@@ -1,4 +1,5 @@
 import { useHistory } from 'react-router-dom'
+import CSS from './AddClimb.module.css'
 import * as climbsAPI from '../../services/climbsAPI'
 import AddClimbForm from '../../components/AddClimbForm/AddClimbForm'
 
@@ -14,7 +15,7 @@ const AddClimb = (props) => {
  }
 
  return (
-  <div>
+  <div className={CSS.page}>
    {user ?
     <AddClimbForm user={user} climbGrades={climbGrades} handleAddClimb={handleAddClimb} />
     :
