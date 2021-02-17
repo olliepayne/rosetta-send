@@ -87,7 +87,7 @@ function App() {
      {user ?
       <Profile user={user} authAPI={authAPI} usersAPI={usersAPI} />
       :
-      <Redirect to="/login" />
+      null
      }
     </Route>
     <Route exact path="/routes/new">

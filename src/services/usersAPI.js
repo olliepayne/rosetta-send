@@ -14,7 +14,3 @@ export function getSubmittedClimbs(id) {
    .then((res) => res.json())
  )
 }
-
-export function getWishlist() {
-
-}

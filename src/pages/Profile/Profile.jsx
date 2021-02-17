@@ -1,24 +1,17 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import CSS from './Profile.module.css'
-
-// show climbs we submitted, and our wishlist
 
 const Profile = (props) => {
  const { id } = useParams()
 
  const { user, authAPI, usersAPI } = props
 
- const [submittedClimbs, setSubmittedClimbs] = useState({})
- const [wishlist, setWishlist] = useState()
+ const [submittedClimbs, setSubmittedClimbs] = useState()
 
  const handleGetSubmittedClimbs = async () => {
   const results = await usersAPI.getSubmittedClimbs(id)
-  console.log(results)
- }
-
- const handleGetWishlist = async () => {
-  // follow previous pattern
+  setSubmittedClimbs(results)
  }
 
  const handleDeleteUser = () => {
@@ -31,7 +24,21 @@ const Profile = (props) => {
 
  return (
   <div className={CSS.page}>
-   
+   <h2>{user.username}'s Profile</h2>
+   <div className={CSS.submittedContainer}>
+    <h3>Submitted Climbs</h3>
+    {submittedClimbs ?
+     <ul>
+      {submittedClimbs.map((climb) => (
+       <li key={climb._id}>
+        <Link to={`/routes/${climb._id}`} target="_blank">{climb.name} / {climb.grade} / {climb.location} / submitted by {climb.addedBy}</Link>
+       </li>
+      ))}
+     </ul>
+     :
+     <p>Loading...</p>
+    }
+   </div>
   </div>
  )
 }
