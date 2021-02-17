@@ -35,3 +35,12 @@ export function logout() {
    .then((res) => res.json())
  )
 }
+
+export function deleteUser() {
+ return (
+  fetch(baseURL + 'deleteUser', {
+   method: 'DELETE'
+  }, { mode: 'cors' })
+   .then((res) => res.json())
+ )
+}

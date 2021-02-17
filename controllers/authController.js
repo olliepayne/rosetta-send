@@ -6,7 +6,8 @@ module.exports = {
  signup,
  login,
  getUser,
- logout
+ logout,
+ delete: deleteOne
 }
 
 function signup(req, res) {
@@ -73,4 +74,15 @@ function logout(req, res) {
  } else {
   res.json({ msg: 'You must be logged in to log out.' })
  }
+}
+
+function deleteOne(req, res) {
+ const token = req.cookies.token
+ const payload = jwt.verify(token, process.env.JWT_SECRET)
+ console.log(payload.user._id)
+ User.findByIdAndDelete(payload.user._id)
+  .then((user) => {
+   res.clearCookie('token')
+   res.json({ msg: 'Account successfully deleted.' })
+  })
 }

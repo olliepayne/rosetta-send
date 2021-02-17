@@ -5,17 +5,13 @@ import CSS from './Profile.module.css'
 const Profile = (props) => {
  const { id } = useParams()
 
- const { user, authAPI, usersAPI } = props
+ const { user, handleDeleteUser, usersAPI } = props
 
  const [submittedClimbs, setSubmittedClimbs] = useState()
 
  const handleGetSubmittedClimbs = async () => {
   const results = await usersAPI.getSubmittedClimbs(id)
   setSubmittedClimbs(results)
- }
-
- const handleDeleteUser = () => {
-  // delete user ** clear cookie -- authAPI
  }
 
  useEffect(() => {
@@ -39,6 +35,8 @@ const Profile = (props) => {
      <p>Loading...</p>
     }
    </div>
+   <h4>Delete Account?</h4>
+   <button className={CSS.deleteBtn} onClick={handleDeleteUser}>Delete</button>
   </div>
  )
 }

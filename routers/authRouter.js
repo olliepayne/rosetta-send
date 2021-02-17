@@ -10,5 +10,6 @@ router.post('/login', authCtrl.login)
 // - - - private routes - - -
 router.get('/getUser', authMiddleware.checkAuth, authCtrl.getUser)
 router.get('/logout', authMiddleware.checkAuth, authCtrl.logout)
+router.delete('/deleteUser', authMiddleware.checkAuth, authCtrl.delete)
 
 module.exports = router

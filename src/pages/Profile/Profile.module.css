@@ -1,0 +1,27 @@
+.page {
+ margin-left: 10px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+}
+
+.submittedContainer > ul {
+ list-style-type: none;
+ padding: 0;
+}
+
+.deleteBtn {
+ background-color: red;
+ border: none;
+ border-radius: 5px;
+ width: 70px;
+ height: 30px;
+ color: white;
+ font-size: 15px;
+}
+
+.deleteBtn:hover {
+ opacity: 75%;
+ transform: scale(1.1);
+ transition: 0.2s;
+}

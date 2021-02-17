@@ -39,7 +39,7 @@ function App() {
   if(result._id) {
    setUser(result)
    setStatusCode()
-   history.push('/')
+   history.push('/routes')
   } else {
    setStatusCode(result.msg)
   }
@@ -50,7 +50,7 @@ function App() {
   if(result._id) {
    setUser(result)
    setStatusCode()
-   history.push('/')
+   history.push('/routes')
   } else {
    setStatusCode(result.msg)
   }
@@ -64,6 +64,12 @@ function App() {
  const handleLogout = async () => {
   await authAPI.logout()
   setUser()
+ }
+
+ const handleDeleteUser = async () => {
+  await authAPI.deleteUser()
+  setUser()
+  history.push('/login')
  }
 
  useEffect(() => {
@@ -85,7 +91,7 @@ function App() {
     </Route>
     <Route exact path="/profile/:id">
      {user ?
-      <Profile user={user} authAPI={authAPI} usersAPI={usersAPI} />
+      <Profile user={user} handleDeleteUser={handleDeleteUser} usersAPI={usersAPI} />
       :
       null
      }

@@ -65,7 +65,7 @@ const SignupForm = (props) => {
      <label>*Password</label>
      <input name="password" type="password" onChange={handleInputChange} />
     </div>
-    {!passwordMatch && <p>passwords must match</p>}
+    {!passwordMatch && <p className={CSS.passwordMatch}>passwords must match</p>}
     <div className={CSS.formEntry}>
      <label>*Confirm Password</label>
      <input name="passwordCheck" type="password" onChange={handleInputChange} />

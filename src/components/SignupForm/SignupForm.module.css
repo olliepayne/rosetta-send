@@ -9,7 +9,7 @@
  background-color: whitesmoke;
  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
  width: 350px;
- height: 270px;
+ height: 300px;
 }
 
 .formMessage {
@@ -28,6 +28,10 @@
 
 .formEntry {
  margin-bottom: 5px;
+}
+
+.passwordMatch {
+ color: red;
 }
 
 .submitBtn {
