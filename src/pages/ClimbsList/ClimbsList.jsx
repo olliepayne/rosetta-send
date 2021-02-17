@@ -11,7 +11,7 @@ const SearchResults = (props) => {
    <ul className={ClimbsListCSS.resultsList}>
     {results.map((climb, index) => (
      <li className={index % 2 === 0 ? ClimbsListCSS.evenResult : ClimbsListCSS.oddResult} key={climb._id}>
-      <Link to={`/routes/${climb._id}`}>{climb.name} / {climb.grade} / {climb.location} / submitted by {climb.addedBy}</Link>
+      <Link to={`/routes/${climb._id}`} target="_blank">{climb.name} / {climb.grade} / {climb.location} / submitted by {climb.addedBy}</Link>
      </li>
     ))}
    </ul>

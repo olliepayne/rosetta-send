@@ -9,8 +9,6 @@ const ClimbDetails = (props) => {
 
  const [climb, setClimb] = useState()
 
- // if we are the owner of the climb, add the ability to update and delete
-
  const handleGetClimb = async () => {
   const result = await climbsAPI.getOne(id)
   setClimb(result)
