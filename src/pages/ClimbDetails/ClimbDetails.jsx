@@ -32,6 +32,10 @@ const ClimbDetails = (props) => {
   history.push('/routes')
  }
 
+ const handleAddComment = () => {
+  
+ }
+
  useEffect(() => {
   handleGetClimb()
  }, [])

@@ -6,6 +6,6 @@ const climbSchema = new mongoose.Schema({
  grade: { type: String, required: true },
  location: { type: String, required: true },
  addedBy: { type: String, required: true }
-})
+}, { timestamps: true })
 
 module.exports = mongoose.model('Climb', climbSchema)

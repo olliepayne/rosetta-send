@@ -5,6 +5,7 @@ require('dotenv').config()
 require('./config/database')
 
 const authRouter = require('./routers/authRouter')
+const usersRouter = require('./routers/usersRouter')
 const climbsRouter = require('./routers/climbsRouter')
 
 const app = express()
@@ -15,6 +16,7 @@ app.use(cookieParser())
 
 // - - - routers - - -
 app.use('/api/auth', authRouter)
+app.use('/api/users', usersRouter)
 app.use('/api/climbs', climbsRouter)
 
 const port = process.env.PORT || 3000

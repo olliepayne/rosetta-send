@@ -12,6 +12,7 @@ const Navbar = (props) => {
      <>
       <li><Link to="/routes">Routes</Link></li>
       <li><Link to="/routes/new">Add Route</Link></li>
+      <li><Link to={`/profile/${user._id}`}>Profile</Link></li>
       <li><Link to="/login" onClick={handleLogout}>Logout</Link></li>
      </>
      :

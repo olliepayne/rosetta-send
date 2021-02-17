@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react'
-import { Route, Switch, useHistory } from 'react-router-dom'
+import { Route, Switch, Redirect, useHistory } from 'react-router-dom'
 import './App.css';
 import * as authAPI from '../../services/authAPI'
 import * as climbsAPI from '../../services/climbsAPI'
 import Navbar from '../../components/Navbar/Navbar'
+import ErrorPage from '../../pages/ErrorPage/ErrorPage'
 import Landing from '../Landing/Landing'
 import Signup from '../Signup/Signup'
 import Login from '../Login/Login'
+import Profile from '../Profile/Profile'
 import AddClimb from '../AddClimb/AddClimb'
 import ClimbsList from '../ClimbsList/ClimbsList'
 import ClimbDetails from '../ClimbDetails/ClimbDetails'
@@ -80,6 +82,13 @@ function App() {
     <Route exact path="/login">
      <Login user={user} statusCode={statusCode} handleLogin={handleLogin} />
     </Route>
+    <Route exact path="/profile/:id">
+     {user ?
+      <Profile user={user} />
+      :
+      <Redirect to="/login" />
+     }
+    </Route>
     <Route exact path="/routes/new">
      <AddClimb user={user} climbGrades={climbGrades} />
     </Route>
@@ -88,6 +97,9 @@ function App() {
     </Route>
     <Route exact path="/routes/:id">
      <ClimbDetails user={user} climbsAPI={climbsAPI} climbGrades={climbGrades} />
+    </Route>
+    <Route path="/">
+     <ErrorPage />
     </Route>
    </Switch>
   </div>
