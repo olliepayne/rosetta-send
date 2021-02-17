@@ -1,4 +1,5 @@
 const express = require('express')
+const path = require('path')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 require('dotenv').config()
@@ -13,11 +14,16 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 app.use(cookieParser())
+app.use(express.static(path.join(__dirname, 'build')));
 
 // - - - routers - - -
 app.use('/api/auth', authRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/climbs', climbsRouter)
+
+app.get('/', function (req, res) {
+ res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 const port = process.env.PORT || 3000
 app.listen(port, () => console.log(`Server connected, listening on port ${port}`))
