@@ -23,8 +23,8 @@ const ClimbDetails = (props) => {
  }
 
  const handleUpdateClimb = async (form) => {
-  const result = climbsAPI.update(id, form)
-  setClimb(result)
+  const result = await climbsAPI.update(id, form)
+  if(result._id === climb._id) setClimb(result)
  }
  
  const handleDeleteClimb = () => {
@@ -54,10 +54,7 @@ const ClimbDetails = (props) => {
       </div>
      </div>
      :
-     <>
-      <UpdateClimbForm climb={climb} climbGrades={climbGrades} handleUpdateClimb={handleUpdateClimb} />
-      <button onClick={handleShowForm} className={ClimbDetailsCSS.updateBtn}>Cancel</button>
-     </>
+     <UpdateClimbForm climb={climb} climbGrades={climbGrades} handleUpdateClimb={handleUpdateClimb} handleShowForm={handleShowForm} />
     :
     <p>Loading...</p>
    }
