@@ -117,13 +117,19 @@ function separateString(str) {
     }
   }
 
-  // strArray = str.split(' ')
-  // for(let word in strArray) {
-  //   strArray[word].trim()
-  //   if(strArray[word].includes(',')) {
-  //     strArray[word] = strArray[word].slice(0, strArray[word].indexOf(','))
-  //   }
-  // }
+  if(str.includes('-')) {
+    for(let word in strArray) {
+      if(strArray[word].includes('-')) {
+        for(let char in strArray[word]) {
+          if(strArray[word][char] === '-') {
+            strArray.push(strArray[word].slice(parseInt(char) + 1, strArray[word].length))
+
+            strArray[word] = strArray[word].slice(0, char)
+          }
+        }
+      }
+    }
+  }
 
   return strArray
 }
