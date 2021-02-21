@@ -60,6 +60,19 @@ function search(req, res) {
       let filteredClimbs = climbs.slice()
       if (filters['name']) {
         const filterNames = separateString(filters.name.toLowerCase())
+        console.log(filterNames)
+        
+        for(let i = 0; i < filteredClimbs.length; i++) {
+          // const climbNames = separateString(filteredClimbs[i].name.toLowerCase())
+
+          // climbNames.forEach(climbName => {
+          //   if(!filterNames.includes(climbName)) {
+          //     filteredClimbs.splice(filteredClimbs.indexOf(climbName), 1)
+          //   }
+          // })
+        }
+
+        // console.log(filteredClimbs)
         // filteredClimbs = filteredClimbs.filter((climb) => climb.name.toLowerCase() === filters.name.toLowerCase())
       }
 
@@ -84,15 +97,33 @@ function search(req, res) {
 }
 
 function separateString(str) {
-  let strArray = str
+  let strArray = []
 
-  strArray = str.split(' ')
-  for(let word in strArray) {
-    strArray[word].trim()
-    if(strArray[word].includes(',')) {
-      strArray[word] = strArray[word].slice(0, strArray[word].indexOf(','))
+  if(str.includes(' ')) {
+    strArray = str.split(' ')
+  }
+
+  if(str.includes(',')) {
+    for(let word in strArray) {
+      if(strArray[word].includes(',')) {
+        let startIndex = 0
+        for(let char in strArray[word]) {
+          if(strArray[word][char] === ',') {
+            strArray[word] = strArray[word].slice(startIndex, char)
+            startIndex = char + 1
+          }
+        }
+      }
     }
   }
+
+  // strArray = str.split(' ')
+  // for(let word in strArray) {
+  //   strArray[word].trim()
+  //   if(strArray[word].includes(',')) {
+  //     strArray[word] = strArray[word].slice(0, strArray[word].indexOf(','))
+  //   }
+  // }
 
   return strArray
 }
