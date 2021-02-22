@@ -84,7 +84,7 @@ const AddClimbForm = (props) => {
      <label>*Location</label>
      <input name="location" type="text" onChange={handleInputChange} />
     </div>
-    <button>Submit</button>
+    <button className={CSS.submitBtn}>Submit</button>
    </form>
   </div>
  )

@@ -10,6 +10,26 @@
  padding: 0;
 }
 
+.submittedContainer > ul li {
+  margin-bottom: 5px;
+ }
+ 
+ .submittedContainer > ul li a {
+  color: black;
+ }
+ 
+ .submittedContainer > ul li a:hover {
+  opacity: 50%;
+ }
+
+.evenResult {
+ 
+}
+
+.oddResult {
+ background-color: rgb(228, 238, 255);
+}
+
 .deleteBtn {
  background-color: red;
  border: none;

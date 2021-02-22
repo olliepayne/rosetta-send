@@ -17,6 +17,14 @@ function getSubmittedClimbs(req, res) {
  User.findById(req.params.id)
   .populate('submittedClimbs')
   .exec((err, user) => {
-   if(user.submittedClimbs) res.json(user.submittedClimbs)
+   if(user) {
+     if(user.submittedClimbs) {
+      res.json(user.submittedClimbs)
+     } else {
+      res.json({ msg: 'User has not submitted any climbs.' })
+     }
+   } else {
+    res.json({ msg: 'User does not exist.' })
+   }
   })
 }

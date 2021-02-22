@@ -25,7 +25,7 @@ const ClimbsList = (props) => {
  const [searchResults, setSearchResults] = useState()
  const [totalResults, setTotalResults] = useState(0)
  const [page, setPage] = useState(0)
- const resultsPerPage = 5
+ const resultsPerPage = 10
 
  const divideSearchResults = (results) => {
   const tempArr = []
