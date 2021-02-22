@@ -1,6 +1,10 @@
 # Rosetta Send
 
 ## [Deployment Link](https://blooming-retreat-36750.herokuapp.com/)
+<br>
+v1.1
+<br>
+* added a more accurate route name / location search algorithm
 <hr>
 **Known Bugs**
 <br>
@@ -46,7 +50,6 @@ Choosing to incorporate authentication from scratch using JSON Web Tokens as opp
 
 #### Icebox
 (In no partucular order)
-* A looser name/location search in the Route Finder. I intend to splice the search string into individual words, do the same on the backend and look for comparisons between the two.
 * Allow users to ' wishlist ' routes. Basically a ToDo list.
 * Add a custom logo / incorporate this logo into tiling on page styling
 * Route ratings / Consumer grades. Have a posted official grade and an average of consumer grades
