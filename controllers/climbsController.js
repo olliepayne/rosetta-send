@@ -56,6 +56,7 @@ function search(req, res) {
   Climb.find({})
     .then((climbs) => {
       let filteredClimbs = climbs.slice()
+
       if (filters['name']) {
         const filterNames = separateString(filters.name.toLowerCase())
         
@@ -86,7 +87,20 @@ function search(req, res) {
       }
 
       if (filters['location']) {
-        filteredClimbs = filteredClimbs.filter((climb) => climb.location.toLowerCase() === filters.location.toLowerCase())
+        const filterLocations = separateString(filters.location.toLowerCase())
+        
+        filteredClimbs = filteredClimbs.filter(climb => {
+          const climbLocations = separateString(climb.location.toLowerCase())
+          let isMatch = false
+
+          filterLocations.forEach(filterLocation => {
+            if(climbLocations.includes(filterLocation)) {
+              isMatch = true
+            }
+          })
+
+          if(isMatch) return climb
+        })
       }
 
       res.json(filteredClimbs)
