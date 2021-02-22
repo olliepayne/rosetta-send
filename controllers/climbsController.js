@@ -51,8 +51,6 @@ function deleteOne(req, res) {
 }
 
 function search(req, res) {
-  // add a more useable name and location filter
-
   const filters = Object.assign({}, req.body)
 
   Climb.find({})
@@ -60,20 +58,19 @@ function search(req, res) {
       let filteredClimbs = climbs.slice()
       if (filters['name']) {
         const filterNames = separateString(filters.name.toLowerCase())
-        console.log(filterNames)
         
-        for(let i = 0; i < filteredClimbs.length; i++) {
-          // const climbNames = separateString(filteredClimbs[i].name.toLowerCase())
+        filteredClimbs = filteredClimbs.filter(climb => {
+          const climbNames = separateString(climb.name.toLowerCase())
+          let isMatch = false
 
-          // climbNames.forEach(climbName => {
-          //   if(!filterNames.includes(climbName)) {
-          //     filteredClimbs.splice(filteredClimbs.indexOf(climbName), 1)
-          //   }
-          // })
-        }
+          filterNames.forEach(filterName => {
+            if(climbNames.includes(filterName)) {
+              isMatch = true
+            }
+          })
 
-        // console.log(filteredClimbs)
-        // filteredClimbs = filteredClimbs.filter((climb) => climb.name.toLowerCase() === filters.name.toLowerCase())
+          if(isMatch) return climb
+        })
       }
 
       if (filters['type']) {
@@ -101,6 +98,8 @@ function separateString(str) {
 
   if(str.includes(' ')) {
     strArray = str.split(' ')
+  } else {
+    strArray.push(str)
   }
 
   const triggerChars = [',', '-']
