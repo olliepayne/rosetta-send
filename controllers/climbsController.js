@@ -103,33 +103,23 @@ function separateString(str) {
     strArray = str.split(' ')
   }
 
-  if(str.includes(',')) {
-    for(let word in strArray) {
-      if(strArray[word].includes(',')) {
-        let startIndex = 0
-        for(let char in strArray[word]) {
-          if(strArray[word][char] === ',') {
-            strArray[word] = strArray[word].slice(startIndex, char)
-            startIndex = char + 1
+  const triggerChars = [',', '-']
+  triggerChars.forEach(triggerChar => {
+    if(str.includes(triggerChar)) {
+      for(let word in strArray) {
+        if(strArray[word].includes(triggerChar)) {
+          for(let char in strArray[word]) {
+            if(strArray[word][char] === triggerChar) {
+              const otherWord = strArray[word].slice(parseInt(char) + 1, strArray[word].length)
+              if(otherWord !== '') strArray.push(strArray[word].slice(parseInt(char) + 1, strArray[word].length))
+  
+              strArray[word] = strArray[word].slice(0, char)
+            }
           }
         }
       }
     }
-  }
-
-  if(str.includes('-')) {
-    for(let word in strArray) {
-      if(strArray[word].includes('-')) {
-        for(let char in strArray[word]) {
-          if(strArray[word][char] === '-') {
-            strArray.push(strArray[word].slice(parseInt(char) + 1, strArray[word].length))
-
-            strArray[word] = strArray[word].slice(0, char)
-          }
-        }
-      }
-    }
-  }
+  })
 
   return strArray
 }
